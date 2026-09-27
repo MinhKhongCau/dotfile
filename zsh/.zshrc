@@ -105,3 +105,18 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+export PATH="$HOME/.config/emacs/bin:$PATH"
+export PATH="$HOME/app/lazygit:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+export PATH="$JAVA_HOME/bin:$PATH"
+export PATH="$HOME/.local/share/pnpm:$PATH"
+
+# pnpm
+export PNPM_HOME='/home/minhminh/.local/share/pnpm'
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
