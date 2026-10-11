@@ -15,5 +15,5 @@ vim.keymap.set("i", "<C-l>", "<C-o>w", { desc = "Move to next word" })
 
 ----------------------- Scroll config ------------------------
 -- Normal mode
-vim.keymap.set("n", "<C-j>", "<C-e>", { desc = "Scroll oneline to bottom" })
-vim.keymap.set("n", "<C-k>", "<C-y>", { desc = "Scroll oneline to top" })
+vim.keymap.set("n", "<C-j>", "<C-e>", { desc = "Scroll oneline to down" })
+vim.keymap.set("n", "<C-k>", "<C-y>", { desc = "Scroll oneline to up" })
