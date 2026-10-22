@@ -129,3 +129,6 @@ esac
 
 # Added by Antigravity CLI installer
 export PATH="/home/minhminh/.local/bin:$PATH"
+
+# SSH server tohin 
+alias mekong-server="ssh alben@101.99.36.34 -p 9000"
