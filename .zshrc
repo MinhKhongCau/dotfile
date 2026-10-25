@@ -131,4 +131,9 @@ esac
 export PATH="/home/minhminh/.local/bin:$PATH"
 
 # SSH server tohin 
-alias mekong-server="ssh alben@101.99.36.34 -p 9000"
+alias mekong-server="echo '[Connecting] ssh alben@101.99.36.34 -p 9000'; ssh alben@101.99.36.34 -p 9000 -v"
+alias golddecor-server="echo '[Connecting] ssh root@103.153.75.14'; ssh root@103.153.75.14"
+alias sandbox-server="echo '[Connecting] ssh root@14.225.211.93'; ssh root@14.225.211.93"
+alias staging-server="echo '[Connecting] ssh root@152.42.69.11'; ssh root@152.42.69.11"
+
+
