@@ -103,6 +103,54 @@ wsl -l -v
 > **Important:** Scheduled tasks cannot execute when the host hardware enters low-power suspension. Disable Windows sleep:
 > * Go to **Settings > System > Power & sleep** -> Set **Sleep** to **Never** when plugged in.
 
+### 4.1. Alternative: Configure via Task Scheduler GUI
+
+If running headless via CLI encounters permission mismatches, configure the background task using the Windows GUI:
+
+1. **Open Task Scheduler:**
+   * Press `Win + R`, type `taskschd.msc`, and press **Enter** (Run as Administrator).
+   * In the right panel (**Actions**), click **Create Task...** *(Do not choose "Create Basic Task")*.
+
+2. **General Tab:**
+   * **Name:** `KeepWSLAlive`
+   * Under **Security options**:
+     * Click **Change User or Group...**, enter your Windows username (`%USERNAME%`), and click **OK**.
+     * Select **Run whether user is logged on or not** *(Mandatory for running without interactive login)*.
+     * Check **Run with highest privileges**.
+     * **Configure for:** Select **Windows 10** or **Windows 11**.
+
+3. **Triggers Tab:**
+   * Click **New...** $\rightarrow$ Set **Begin the task:** to **At startup**.
+   * Ensure **Enabled** is checked $\rightarrow$ Click **OK**.
+
+4. **Actions Tab:**
+   * Click **New...** $\rightarrow$ Set **Action:** to **Start a program**.
+   * **Program/script:**
+     ```text
+     wsl.exe
+     ```
+   * **Add arguments (optional):**
+     ```text
+     -d Ubuntu -u root -- sleep infinity
+     ```
+     *(Adjust `Ubuntu` if your distribution name differs in `wsl -l -v`)*.
+   * Click **OK**.
+
+5. **Conditions & Settings Tabs:**
+   * In **Conditions**: Uncheck all options under **Power** (*Stop if the computer switches to battery power*, etc.).
+   * In **Settings**:
+     * Check **Allow task to be run on demand**.
+     * Check **Run task as soon as possible after a scheduled start is missed**.
+     * Uncheck **Stop the task if it runs longer than**.
+   * Click **OK** $\rightarrow$ Enter your **Windows Account Password** when prompted to store execution credentials.
+
+6. **Verify Execution:**
+   * Right-click `KeepWSLAlive` in **Task Scheduler Library** $\rightarrow$ Select **Run**.
+   * Verify status in CMD/PowerShell:
+     ```cmd
+     wsl -l -v
+     ```
+     The distribution state should now show **Running**.
 ---
 
 ## 5. Next Steps
