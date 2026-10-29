@@ -76,27 +76,32 @@ sudo systemctl status ssh
 > ```
 
 ---
-
 ## 4. Keep WSL Running on Boot (Headless Setup)
 
-If Windows restarts or runs without an active interactive login, create a scheduled task to launch WSL in the background:
+If Windows restarts or runs without an active interactive login, create a scheduled task to start and keep the WSL instance alive in the background.
 
-Run in **PowerShell (Administrator)**:
+Open **Command Prompt as Administrator** and execute:
 
-```powershell
-$action = New-ScheduledTaskAction -Execute "wsl.exe" -Argument "-d Ubuntu-24.04 -u root -- exec sleep infinity"
-$trigger = New-ScheduledTaskTrigger -AtStartup
-Register-ScheduledTask -TaskName "KeepWSLAlive" -Action $action -Trigger $trigger -RunLevel Highest -User "$env:USERNAME"
+```cmd
+:: Create the task to run automatically on system boot with elevated privileges
+schtasks /create /tn "KeepWSLAlive" /tr "wsl.exe -d Ubuntu-24.04 -u root -- exec sleep infinity" /sc onstart /ru "%USERNAME%" /rl HIGHEST /f
+
+:: Run the task immediately without restarting
+schtasks /run /tn "KeepWSLAlive"
 ```
 
-Verify task status:
+Verify the task registration and WSL execution status:
 
-```powershell
-Get-ScheduledTask -TaskName "KeepWSLAlive"
+```cmd
+:: Check scheduled task configuration
+schtasks /query /tn "KeepWSLAlive" /fo LIST /v
+
+:: Verify that the Ubuntu instance is in 'Running' state
+wsl -l -v
 ```
 
-> **Important:** To prevent the machine from suspending background processes, disable system sleep in Windows:
-> * Go to **Settings > System > Power & sleep** $\rightarrow$ Set **Sleep** to **Never** when plugged in.
+> **Important:** Scheduled tasks cannot execute when the host hardware enters low-power suspension. Disable Windows sleep:
+> * Go to **Settings > System > Power & sleep** -> Set **Sleep** to **Never** when plugged in.
 
 ---
 
