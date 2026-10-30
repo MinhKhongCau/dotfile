@@ -1,0 +1,12 @@
+# Files stow should NOT link into $HOME (Perl regexes)
+\.git
+\.gitignore
+\.stow-local-ignore
+README.*
+LICENSE.*
+scripts
+shell_note\.md
+vimium
+\.ssh
+\.local
+.*\.log
