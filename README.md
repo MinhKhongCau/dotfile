@@ -26,7 +26,7 @@ Personal setup for Linux / WSL. Follows **DRY — Don't Repeat Yourself**: one s
 ### 1. Clone
 
 ```sh
-git clone <repo-url> ~/workspace/dotfile
+git clone git@github.com:MinhKhongCau/dotfile.git ~/workspace/dotfile
 cd ~/workspace/dotfile
 ```
 

@@ -11,3 +11,8 @@ docker service ls
 # Reload docker swarm 
 docker service update <service-name>
 ```
+
+## Install extention manager
+- Vitals 
+- Shell Tiling
+- Dash2Dock Animated 
