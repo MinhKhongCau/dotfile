@@ -12,6 +12,30 @@ docker service ls
 docker service update <service-name>
 ```
 
+# Setup openvpn
+
+```
+# Install openvpn
+sudo apt update 
+sudo apt install openvpn
+
+# (Optional) move file ***.ovpn to ~/.config/openvpn/sslvpn-minhnq.tts-client-config.ovpn
+mv ~/<file origin ovpn>/***.ovpn ~/.config/***.ovpn
+sudo openvpn --config ~/.config/***.ovpn
+
+# Enable openvpn (manual)
+sudo systemctl enable --now openvpn openvpn@client
+
+# Auto add username and pass when openvpn
+nano ~/.config/openvpn/auth.txt
+# (copy user name | pass with expample)
+<username>
+<password>
+
+sudo systemctl enable --now openvpn openvpn@client --auth-user-pass ~/.config/openvpn/auth.txt
+
+```
+
 ## Install extention manager
 - Vitals 
 - Shell Tiling
