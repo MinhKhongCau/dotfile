@@ -136,4 +136,7 @@ alias golddecor-server="echo '[Connecting] ssh root@103.153.75.14'; ssh root@103
 alias sandbox-server="echo '[Connecting] ssh root@14.225.211.93'; ssh root@14.225.211.93"
 alias staging-server="echo '[Connecting] ssh root@152.42.69.11'; ssh root@152.42.69.11"
 
+export MY_OVPN_FILE="~/Downloads/sslvpn-minhnq.tts-client-config.ovpn"
+export MY_OVPN_AUTH="~/.config/openvpn/auth.txt"
+alias connect-vpn="sudo openvpn --config ~/Downloads/sslvpn-minhnq.tts-client-config.ovpn --auth-user-pass /home/minhminh/.config/openvpn/auth.txt"
 

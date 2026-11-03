@@ -32,7 +32,7 @@ nano ~/.config/openvpn/auth.txt
 <username>
 <password>
 
-sudo systemctl enable --now openvpn openvpn@client --auth-user-pass ~/.config/openvpn/auth.txt
+sudo openvpn --config ~/Downloads/sslvpn-minhnq.tts-client-config.ovpn --auth-user-pass /home/minhminh/.config/openvpn/auth.txt
 
 ```
 
