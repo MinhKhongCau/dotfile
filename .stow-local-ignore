@@ -5,6 +5,7 @@
 README.*
 LICENSE.*
 scripts
+install\.sh
 shell_note\.md
 vimium
 \.ssh

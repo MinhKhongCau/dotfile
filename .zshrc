@@ -119,7 +119,7 @@ export PATH="$JAVA_HOME/bin:$PATH"
 export PATH="$HOME/.local/share/pnpm:$PATH"
 
 # pnpm
-export PNPM_HOME='/home/minhminh/.local/share/pnpm'
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME/bin:"*) ;;
   *) export PATH="$PNPM_HOME/bin:$PATH" ;;
@@ -128,7 +128,7 @@ esac
 
 
 # Added by Antigravity CLI installer
-export PATH="/home/minhminh/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # SSH server tohin 
 alias mekong-server="echo '[Connecting] ssh alben@101.99.36.34 -p 9000'; ssh alben@101.99.36.34 -p 9000 -v"
@@ -138,5 +138,12 @@ alias staging-server="echo '[Connecting] ssh root@152.42.69.11'; ssh root@152.42
 
 export MY_OVPN_FILE="~/Downloads/sslvpn-minhnq.tts-client-config.ovpn"
 export MY_OVPN_AUTH="~/.config/openvpn/auth.txt"
-alias connect-vpn="sudo openvpn --config ~/Downloads/sslvpn-minhnq.tts-client-config.ovpn --auth-user-pass /home/minhminh/.config/openvpn/auth.txt"
+alias connect-vpn="sudo openvpn --config ~/Downloads/sslvpn-minhnq.tts-client-config.ovpn --auth-user-pass $HOME/.config/openvpn/auth.txt"
 
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
+# Install font for nvim and tmux 
+# brew install --cask font-jetbrains-mono-nerd-font 
+# Using font-jetbrains-mono-nerd-font for dèfault font 
+# MAC: Setting (cmd + ,) > Profiles > Text > Font > (font-jetbrains-mono-nerd-font)
